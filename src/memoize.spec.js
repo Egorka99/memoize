@@ -5,7 +5,7 @@ import {memoize} from './memoize';
 
 describe('memoize', () => {
     it('should be a function', () => {
-        expect(memoize).to.be.a('function');
+        expect(memoize).to.be.a('function'); 
     });
 
     it('should return undefined if no function provided', () => {
@@ -57,7 +57,7 @@ describe('memoize', () => {
 
         it('delegates calls preserving context', () => {
             const ctx = {};
-            expect(ctx::memoizedAbs(0, 1)).to.equal(1);
+            expect(ctx::memoizedAbs(0, 1)).to.equal(1); 
             sinon.assert.calledOn(absSpy, ctx);
         });
 
