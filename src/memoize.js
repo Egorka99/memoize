@@ -3,7 +3,7 @@ export function memoize(fn) {
         return null;
     } 
     let cache = new Map();  
-    return (...args) => { 
+    return function(...args) { 
       for (let key of cache.keys()) {
             console.log("Cache");
             if (compare(key,args)) {   
@@ -11,13 +11,12 @@ export function memoize(fn) {
             }   
         }
         console.log("Calculating");
-        let result = fn(...args); 
+        let result = fn.call(this, ...args); 
         cache.set(args,result); 
-        return result;   
+        return result;    
     }   
-  }  
-       
+  }   
+        
 function compare(a1, a2) { 
     return a1.length == a2.length && a1.every((v,i)=>v == a2[i])
 }  
-    
